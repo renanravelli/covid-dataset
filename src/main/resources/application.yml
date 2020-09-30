@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    username: ${DATABASE_USERNAME:postgres}
+    password: ${DATABASE_PASSWORD:covid-data-provider}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:15432/postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  batch:
+    job:
+      enabled: false
+    table-prefix: BATCH_
+    initialize-schema: never
+covid:
+  dataset:
+    url: http://covid.ourworldindata.org/data/owid-covid-data.csv
+  file:
+    name: owid-covid-data.csv
+    directory: ${FILE_IN:/tmp/in}
